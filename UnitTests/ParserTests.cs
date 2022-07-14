@@ -1,9 +1,10 @@
+using CSV_Parser.Models;
 using FluentAssertions;
 namespace UnitTests;
 
 public class Tests
 {
-    private static readonly DirectoryInfo? _datasetPath =
+    private readonly DirectoryInfo? _datasetPath =
         Directory.GetParent(Directory.GetParent(
             Directory.GetParent(
                 Directory.GetParent(
@@ -31,6 +32,13 @@ public class Tests
     {
         var text = File.ReadAllText(_datasetPath + "/CSV-Parser/Dataset/input.csv");
         text.Should().NotBeEmpty();
+    }
+    
+    [Test]
+    public void Create_a_Person_Class_And_Check_If_It_Is_Not_Null_Or_Empty()
+    {
+        var person = new Person();
+        person.Should().NotBeNull();
     }
     
     
