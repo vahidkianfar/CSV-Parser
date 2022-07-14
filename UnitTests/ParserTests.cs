@@ -13,6 +13,7 @@ public class Tests
             ?? string.Empty)?.ToString() ?? string.Empty);
 
     private static readonly string[] Text = File.ReadAllLines(DatasetPath + "/CSV-Parser/Dataset/input.csv");
+    private static readonly List<Person> Persons = Text.Select(line => new Person(line)).ToList();
     
     [SetUp]
     public void Setup()
@@ -45,8 +46,24 @@ public class Tests
     [Test]
     public void Store_CSV_File_Into_A_List_Of_Objects_Of_Person_Class()
     {
-        var persons = Text.Select(line => new Person(line)).ToList();
-        persons.Should().NotBeEmpty();
+        Persons.Should().NotBeEmpty();
+    }
+    
+    [Test]
+    public void Could_Be_Able_To_Use_Query_To_Find_Specific_Person()
+    {
+        var query = from person in Persons
+            where person.FirstName.Contains("Karma") && person.LastName.Contains("Quarto")
+            select person;
+
+        List<Person> enumerable = query.ToList();
+        
+        
+        enumerable.Count.Should().Be(1);
+        enumerable.First().FirstName.Should().Be("Karma");
+        enumerable.First().LastName.Should().Be("Quarto");
+        enumerable.First().CompanyName.Should().Be("J C S Machinery");
+           
     }
     
     
