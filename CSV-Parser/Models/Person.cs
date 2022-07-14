@@ -39,5 +39,33 @@ public class Person
         Email = columns[9];
         Web = columns[10];
     }
+    public static void RetrievePersonByName(List<Person> persons, string firstName, string lastName)
+    {
+        var query = from person in persons
+            where person.FirstName.Contains(firstName) && person.LastName.Contains(lastName)
+            select person;
+
+        List<Person> enumerable = query.ToList();
+        
+        enumerable.Select(person => "Count: " + enumerable.Count + "\n" + person.FirstName +
+                                    " " + person.LastName + " - " + person.CompanyName)
+            .ToList().ForEach(Console.WriteLine);
+    }
+    
+    public static void RetrievePersonByCounty(List<Person> persons, string county)
+    {
+        var queryCounty = from person in persons
+            where person.County.Contains(county)
+            select person;
+    
+        List<Person> enumerableCounty = queryCounty.ToList();
+        Console.WriteLine("Count: " + enumerableCounty.Count);
+        var counter = 0;
+        foreach (var person in enumerableCounty)
+        {
+            Console.WriteLine(counter+1+ ". " + person.FirstName + " " + person.LastName + " - " + person.CompanyName);
+            counter++;
+        }
+    }
 
 }

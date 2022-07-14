@@ -1,3 +1,5 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using CSV_Parser.Models;
+using CSV_Parser.UI;
 
-Console.WriteLine("Hello, World!");
+
+MainMenu.Start(LoadData.FromCsv());

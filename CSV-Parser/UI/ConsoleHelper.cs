@@ -1,8 +1,6 @@
 ﻿using Spectre.Console;
 namespace CSV_Parser.UI;
 
-
-
 public static class ConsoleHelper
 {
      public static int MultipleChoice(bool canCancel, params string[] options)
@@ -17,9 +15,9 @@ public static class ConsoleHelper
 
         do 
         {
-            // Console.WriteLine();
-            // AnsiConsole.Write(new Calendar(DateTime.Now).AddCalendarEvent(DateTime.Today)
-            //     .BorderColor(Color.DarkOliveGreen2));
+            Console.WriteLine();
+            AnsiConsole.Write(new Calendar(DateTime.Now).AddCalendarEvent(DateTime.Today)
+                .BorderColor(Color.DarkOliveGreen2));
             for (var optionCounter = 0; optionCounter < options.Length; optionCounter++)
             {
                 
