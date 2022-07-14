@@ -10,7 +10,7 @@ public static class SearchMenu
         
         while (true)
         {
-            //Console.Clear();
+            Console.Clear();
             var selectInstructionOption =
                 ConsoleHelper.MultipleChoice(true, "1. Search by First Name and Last Name", "2. Search by County");
             switch (selectInstructionOption)
@@ -25,6 +25,7 @@ public static class SearchMenu
                     var county = AnsiConsole.Ask<string>("Enter the County (e.g. [orange1]Derbyshire[/]): ");
                     Console.Clear();
                     Person.RetrievePersonByCounty(persons, county);
+                    
                     break;
                 
                 case 2:

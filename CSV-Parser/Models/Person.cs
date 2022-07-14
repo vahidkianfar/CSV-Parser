@@ -1,4 +1,6 @@
-﻿namespace CSV_Parser.Models;
+﻿using Spectre.Console;
+
+namespace CSV_Parser.Models;
 
 public class Person
 {
@@ -41,15 +43,29 @@ public class Person
     }
     public static void RetrievePersonByName(List<Person> persons, string firstName, string lastName)
     {
+        Console.Clear();
+        
+        
         var query = from person in persons
             where person.FirstName.Contains(firstName) && person.LastName.Contains(lastName)
             select person;
 
-        List<Person> enumerable = query.ToList();
+        List<Person> enumerablePerson = query.ToList();
         
-        enumerable.Select(person => "Count: " + enumerable.Count + "\n" + person.FirstName +
-                                    " " + person.LastName + " - " + person.CompanyName)
-            .ToList().ForEach(Console.WriteLine);
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("Count: " + enumerablePerson.Count);
+        Console.ResetColor();
+        var counter = 0;
+        foreach (var person in enumerablePerson)
+        {
+            Console.WriteLine(counter+1+ ". " + person.FirstName + " " + person.LastName + " - " + person.CompanyName);
+            counter++;
+        }
+       
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("Press any key to continue...");
+        Console.ReadKey();
+        Console.ResetColor();
     }
     
     public static void RetrievePersonByCounty(List<Person> persons, string county)
@@ -59,13 +75,20 @@ public class Person
             select person;
     
         List<Person> enumerableCounty = queryCounty.ToList();
+        Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine("Count: " + enumerableCounty.Count);
+        Console.ResetColor();
         var counter = 0;
         foreach (var person in enumerableCounty)
         {
             Console.WriteLine(counter+1+ ". " + person.FirstName + " " + person.LastName + " - " + person.CompanyName);
             counter++;
         }
+        
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("Press any key to continue...");
+        Console.ReadKey();
+        Console.ResetColor();
     }
 
 }
