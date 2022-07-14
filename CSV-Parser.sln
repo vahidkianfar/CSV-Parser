@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSV-Parser", "CSV-Parser\CSV-Parser.csproj", "{0E74BF55-2C77-45B8-A6A6-D790FF84162C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{D7D9248B-E8CE-4DF8-848F-2FF55E1BB54F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0E74BF55-2C77-45B8-A6A6-D790FF84162C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E74BF55-2C77-45B8-A6A6-D790FF84162C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E74BF55-2C77-45B8-A6A6-D790FF84162C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E74BF55-2C77-45B8-A6A6-D790FF84162C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7D9248B-E8CE-4DF8-848F-2FF55E1BB54F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7D9248B-E8CE-4DF8-848F-2FF55E1BB54F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7D9248B-E8CE-4DF8-848F-2FF55E1BB54F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7D9248B-E8CE-4DF8-848F-2FF55E1BB54F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
