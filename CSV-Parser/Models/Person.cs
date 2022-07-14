@@ -23,5 +23,21 @@ public class Person
     public string Email { get; set; }
     
     public string Web { get; set; }
+    
+    public Person(string rowData)
+    {
+        var columns = rowData.Split(',');
+        FirstName = columns[0];
+        LastName = columns[1];
+        CompanyName = columns[2];
+        Address = columns[3];
+        City = columns[4];
+        County = columns[5];
+        Postal = columns[6];
+        Phone1 = columns[7];
+        Phone2 = columns[8];
+        Email = columns[9];
+        Web = columns[10];
+    }
 
 }
