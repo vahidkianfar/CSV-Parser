@@ -17,16 +17,17 @@ public static class CreateLiveTable
                 table.AddColumn("First Name");
                 table.AddColumn("Last Name");
                 table.AddColumn("Company Name");
+                
                 if(address) table.AddColumn("Address");
                 if(url) table.AddColumn("URL");
                 if(postal) table.AddColumn("Postal Code");
+                
                 if (phone)
                 {
                     table.AddColumn("Phone1");
                     table.AddColumn("Phone2");
                 }
-        
-        
+                
                 for (var row = 0; row <personCounter; row++)
                 {
                     table.AddRow($"{row+1}");
@@ -46,7 +47,6 @@ public static class CreateLiveTable
                             table.UpdateCell(counter, 4, $"[yellow]{person.Web}[/]");
                         if (postal)
                             table.UpdateCell(counter, 4, $"[yellow]{person.Postal}[/]");
-
                         if (phone)
                         {
                             table.UpdateCell(counter, 4, $"[yellow]{person.Phone1}[/]");
@@ -58,7 +58,6 @@ public static class CreateLiveTable
                     ctx.Refresh();
                     counter++;
                 }
-
                 return Task.CompletedTask;
             });
     }

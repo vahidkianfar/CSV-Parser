@@ -17,11 +17,8 @@ public class Tests
     
     [SetUp]
     public void Setup()
-    {
-
+    { }
     
-    }
-
     [Test]
     public void Read_Dataset_and_Store_It_Into_String()
     {
@@ -58,7 +55,6 @@ public class Tests
 
         List<Person> enumerable = query.ToList();
         
-        
         enumerable.Count.Should().Be(1);
         enumerable.First().FirstName.Should().Be("Karma");
         enumerable.First().LastName.Should().Be("Quarto");
@@ -79,8 +75,5 @@ public class Tests
         
         enumerableCompany.First().FirstName.Should().Be("France");
         enumerableCompany.First().LastName.Should().Be("Andrade");
-           
     }
-    
-    
 }

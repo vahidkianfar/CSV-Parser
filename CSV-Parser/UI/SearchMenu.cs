@@ -14,7 +14,7 @@ public static class SearchMenu
             var selectInstructionOption =
                 ConsoleHelper.MultipleChoice(true, "1. Search by First Name and Last Name", "2. Search by County" , "3. Search by Company Name",
                     "4. Search by House Number Digits" , "5. Search by the least URL Characters", "6. Search By the Postal Code Digits",
-                    "7. Return the Persons whose first phone number is numerically larger than their second phone number");
+                    "7. Return the Persons whose first phone number is numerically larger than their second phone number","8. Exit");
             switch (selectInstructionOption)
             {
                 case 0:
@@ -22,75 +22,48 @@ public static class SearchMenu
                     var lastName = AnsiConsole.Ask<string>("Enter Last Name (e.g. [orange1]Quarto[/]): ");
                     Console.Clear();
                     await Person.RetrievePersonByName(persons, firstName, lastName);
-                    
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Press any key to continue...");
-                    Console.ReadKey();
-                    Console.ResetColor();
+                    PressAnyKeyToContinue();
                     break;
+                
                 case 1:
                     var county = AnsiConsole.Ask<string>("Enter the County (e.g. [orange1]Derbyshire[/]): ");
                     Console.Clear();
                     await Person.RetrievePersonByCounty(persons, county);
-                    
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Press any key to continue...");
-                    Console.ReadKey();
-                    Console.ResetColor();
+                    PressAnyKeyToContinue();
                     break;
                 
                 case 2:
                     var company = AnsiConsole.Ask<string>("Enter the Company Name \"Full or Partial\" (e.g. [orange1]Esq[/]): ");
                     Console.Clear();
                     await Person.RetrievePersonByCompanyName(persons, company);
-                    
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Press any key to continue...");
-                    Console.ReadKey();
-                    Console.ResetColor();
+                    PressAnyKeyToContinue();
                     break;
                 
                 case 3:
                     var houseNumberDigits = AnsiConsole.Ask<int>("Enter the House Number Digits (e.g. [orange1]3[/]): ");
                     Console.Clear();
                     await Person.RetrievePersonByHouseNumberDigits(persons, houseNumberDigits);
-                    
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Press any key to continue...");
-                    Console.ReadKey();
-                    Console.ResetColor();
+                    PressAnyKeyToContinue();
                     break;
                 
                 case 4:
                     var urlCharacters = AnsiConsole.Ask<int>("Enter the least URL Characters (e.g. [orange1]35[/]): ");
                     Console.Clear();
                     await Person.RetrievePersonByURL(persons, urlCharacters);
-                    
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Press any key to continue...");
-                    Console.ReadKey();
-                    Console.ResetColor();
+                    PressAnyKeyToContinue();
                     break;
                 
                 case 5:
                     var postalCodeDigits = AnsiConsole.Ask<int>("Enter the Postal Code Digits (e.g. [orange1]1[/]): ");
                     Console.Clear();
                     await Person.RetrievePersonByPostalCodeNumberOfDigits(persons, postalCodeDigits);
-                    
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Press any key to continue...");
-                    Console.ReadKey();
-                    Console.ResetColor();
+                    PressAnyKeyToContinue();
                     break;
                 
                 case 6:
                     Console.Clear();
                     await Person.RetrievePersonByBiggerFirstPhoneNumber(persons);
-                    
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Press any key to continue...");
-                    Console.ReadKey();
-                    Console.ResetColor();
+                    PressAnyKeyToContinue();
                     break;
                 
                 case 7:
@@ -98,6 +71,13 @@ public static class SearchMenu
                     break;
             }
         }
-
+    }
+    
+    private static void PressAnyKeyToContinue()
+    {
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("Press any key to continue...");
+        Console.ReadKey();
+        Console.ResetColor();
     }
 }
