@@ -15,10 +15,5 @@ public static class LoadData
         var persons = text.Select(line => new Person(line)).ToList();
         return persons;
     }
-    
-    public static string[] FromCsvText()
-    {
-        var text = File.ReadAllLines(DatasetPath + "/CSV-Parser/Dataset/input.csv");
-        return text;
-    }
+
 }
