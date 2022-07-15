@@ -1,4 +1,4 @@
-# CSV-Parser
+#CSV-Parser
 
 This App Contains 2 Main Folder and 3 Subfolder:
 
@@ -9,15 +9,15 @@ This App Contains 2 Main Folder and 3 Subfolder:
 In this project I created a simple CSV-Parser for specific type of CSV, but its highly expandale, I Stored the Columns and Rows into Objects from
 Person Class and Retrieved Data by Query.
 
-## Description:
+##Description:
 
-We have a CSV File with 11 different column:
+We have a CSV File with 11 different columns:
 first_name, last_name, company_name, address, city, county, postal, phone1, phone2, email, and web.
 
 we want to store this data into a Data Structure and retrieve that data, for the simplicity I created a Person Class and read all the data and stored it into
 a List<Person>, each Person object have the CSV headers as Fields and then I Used LINQ.
 
-## Challenge:
+##Challenge:
 
 The Most challenge that I faced was splitting the Company Name Cause some of the fields has comma!
 for exampl, compane_name: **Elliott, John W Esq**, basically when I wanted to split it by comma, it skipped the second part "John W Esq",
