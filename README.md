@@ -6,8 +6,8 @@ This App Contains 2 Main Folder and 3 Subfolder:
 2. Dataset (Our CSV)
 3. UI (MainMenu, SearchMenu, LiveTable)
 
-In this project I created a simple CSV-Parser for specific type of CSV, but its highly expandale, I Stored the Columns and Rows into Objects from
-Person Class and Retrieved Data by Query.
+In this project I created a simple CSV-Parser for specific type of CSV, and its highly expandale, I Stored the Columns and Rows into Objects from
+Person Class and Retrieved Data by Query (LINQ).
 
 ## App Menu:
 
@@ -24,7 +24,7 @@ a List<Person>, each Person object have the CSV headers as Fields and then I Use
 
 ## Challenge:
 
-The Most challenge that I faced was splitting the Company Name, cause some of the fields has comma!
+The most difficult challenge that I faced was splitting the Company Name, because some of the fields has comma.
 for example, company_name: **"Elliott, John W Esq"**, basically when I wanted to split it by comma, it skipped the second part **John W Esq**,
 I had to create a RegEx to skip the comma within Quotation Mark:
 
