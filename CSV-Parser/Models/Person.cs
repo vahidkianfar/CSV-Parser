@@ -99,6 +99,7 @@ public class Person
     
     public static async Task RetrievePersonByCompanyName(List<Person> persons, string company)
     {
+        Console.Clear();
         var queryCompany = from person in persons
             where person.CompanyName.Contains(company)
             select person;
