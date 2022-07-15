@@ -6,7 +6,7 @@ public static class ConsoleHelper
      public static int MultipleChoice(bool canCancel, params string[] options)
     {
         const int startX = 45;
-        const int startY = 5;
+        const int startY = 3;
         const int optionsPerLine = 1;
         const int spacingPerLine = 14;
         var currentSelection = 0;
