@@ -5,7 +5,7 @@ namespace CSV_Parser.UI;
 
 public static class MainMenu
 {
-    public static void Start(List<Person> persons)
+    public static async Task Start(List<Person> persons)
     {
         AnsiConsole.Progress()
             .Start(ctx => 
@@ -22,7 +22,7 @@ public static class MainMenu
             switch (selectInstructionOption)
             {
                 case 0:
-                    SearchMenu.Start(persons);
+                    await SearchMenu.Start(persons);
                     break;
                 
                 case 1:

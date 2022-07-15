@@ -1,4 +1,6 @@
-﻿using Spectre.Console;
+﻿using System.Text.RegularExpressions;
+using CSV_Parser.UI;
+using Spectre.Console;
 
 namespace CSV_Parser.Models;
 
@@ -28,7 +30,7 @@ public class Person
     
     public Person(string rowData)
     {
-        var columns = rowData.Split(',');
+        var columns = Regex.Split(rowData, "[,]{1}(?=(?:[^\"]*\"[^\"]*\")*(?![^\"]*\"))");
         FirstName = columns[0];
         LastName = columns[1];
         CompanyName = columns[2];
@@ -41,49 +43,49 @@ public class Person
         Email = columns[9];
         Web = columns[10];
     }
-    public static void RetrievePersonByName(List<Person> persons, string firstName, string lastName)
+    public static async Task RetrievePersonByName(List<Person> persons, string firstName, string lastName)
     {
         Console.Clear();
-        
-        
         var query = from person in persons
             where person.FirstName.Contains(firstName) && person.LastName.Contains(lastName)
             select person;
 
         List<Person> enumerablePerson = query.ToList();
+        await CreateLiveTable.LiveTable(enumerablePerson.Count, enumerablePerson);
         
-        Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine("Count: " + enumerablePerson.Count);
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("Press any key to continue...");
+        Console.ReadKey();
         Console.ResetColor();
-        var counter = 0;
-        foreach (var person in enumerablePerson)
-        {
-            Console.WriteLine(counter+1+ ". " + person.FirstName + " " + person.LastName + " - " + person.CompanyName);
-            counter++;
-        }
-       
+        
+    }
+    
+    public static async Task RetrievePersonByCounty(List<Person> persons, string county)
+    {
+        Console.Clear();
+        var queryCounty = from person in persons
+            where person.County.Contains(county)
+            select person;
+    
+        List<Person> enumerableCounty = queryCounty.ToList();
+        
+        await CreateLiveTable.LiveTable(enumerableCounty.Count, enumerableCounty);
+        
         Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("Press any key to continue...");
         Console.ReadKey();
         Console.ResetColor();
     }
     
-    public static void RetrievePersonByCounty(List<Person> persons, string county)
+    public static async Task RetrievePersonByCompanyName(List<Person> persons, string company)
     {
-        var queryCounty = from person in persons
-            where person.County.Contains(county)
+        Console.Clear();
+        var queryCompany = from person in persons
+            where person.CompanyName.Contains(company)
             select person;
-    
-        List<Person> enumerableCounty = queryCounty.ToList();
-        Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine("Count: " + enumerableCounty.Count);
-        Console.ResetColor();
-        var counter = 0;
-        foreach (var person in enumerableCounty)
-        {
-            Console.WriteLine(counter+1+ ". " + person.FirstName + " " + person.LastName + " - " + person.CompanyName);
-            counter++;
-        }
+
+        List<Person> enumerableCompany = queryCompany.ToList();
+        await CreateLiveTable.LiveTable(enumerableCompany.Count, enumerableCompany);
         
         Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("Press any key to continue...");
@@ -91,4 +93,8 @@ public class Person
         Console.ResetColor();
     }
 
+    public static async Task RetrievePersonByURL()
+    {
+        
+    }
 }

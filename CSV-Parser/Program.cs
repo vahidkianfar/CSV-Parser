@@ -2,4 +2,4 @@
 using CSV_Parser.UI;
 
 
-MainMenu.Start(LoadData.FromCsv());
+await MainMenu.Start(LoadData.FromCsv());

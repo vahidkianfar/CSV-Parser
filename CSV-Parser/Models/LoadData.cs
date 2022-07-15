@@ -11,8 +11,14 @@ public static class LoadData
             ?? string.Empty)?.ToString() ?? string.Empty);
     public static List<Person> FromCsv()
     {
-        var Text = File.ReadAllLines(DatasetPath + "/CSV-Parser/Dataset/input.csv");
-        var Persons = Text.Select(line => new Person(line)).ToList();
-        return Persons;
+        var text = File.ReadAllLines(DatasetPath + "/CSV-Parser/Dataset/input.csv");
+        var persons = text.Select(line => new Person(line)).ToList();
+        return persons;
+    }
+    
+    public static string[] FromCsvText()
+    {
+        var text = File.ReadAllLines(DatasetPath + "/CSV-Parser/Dataset/input.csv");
+        return text;
     }
 }
