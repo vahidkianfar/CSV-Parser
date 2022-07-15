@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Numerics;
 using System.Text.RegularExpressions;
 using CSV_Parser.UI;
 using Spectre.Console;
@@ -7,26 +8,37 @@ namespace CSV_Parser.Models;
 
 public class Person
 {
+    [Column("first_name")]
     public string FirstName { get; set; }
     
+    [Column("last_name")]
     public string LastName { get; set; }
     
+    [Column("company_name")]
     public string CompanyName { get; set; }
     
+    [Column("address")]
     public string Address { get; set; }
     
+    [Column("city")]
     public string City { get; set; }
     
+    [Column("county")]
     public string County { get; set; }
     
+    [Column("postal")]
     public string Postal { get; set; }
     
+    [Column("phone1")]
     public string Phone1 { get; set; }
     
+    [Column("phone2")]
     public string Phone2 { get; set; }
     
+    [Column("email")]
     public string Email { get; set; }
     
+    [Column("web")]
     public string Web { get; set; }
 
     public Person(string rowData)

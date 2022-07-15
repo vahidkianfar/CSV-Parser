@@ -14,7 +14,7 @@ public static class SearchMenu
             var selectInstructionOption =
                 ConsoleHelper.MultipleChoice(true, "1. Search by First Name and Last Name", "2. Search by County" , "3. Search by Company Name",
                     "4. Search by House Number Digits" , "5. Search by the least URL Characters", "6. Search By the Postal Code Digits",
-                    "7. Return the Persons whose first phone number is numerically larger than their second phone number","8. Exit");
+                    "7. Return the Persons by bigger first phone number","8. Exit");
             switch (selectInstructionOption)
             {
                 case 0:
@@ -57,12 +57,14 @@ public static class SearchMenu
                     var postalCodeDigits = AnsiConsole.Ask<int>("Enter the Postal Code Digits (e.g. [orange1]1[/]): ");
                     Console.Clear();
                     await Person.RetrievePersonByPostalCodeNumberOfDigits(persons, postalCodeDigits);
+                    
                     PressAnyKeyToContinue();
                     break;
                 
                 case 6:
                     Console.Clear();
                     await Person.RetrievePersonByBiggerFirstPhoneNumber(persons);
+                    
                     PressAnyKeyToContinue();
                     break;
                 
