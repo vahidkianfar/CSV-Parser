@@ -4,7 +4,7 @@ This App Contains 2 Main Folder and 3 Subfolder:
 
 1. Models (Person class, Loading Data)
 2. Dataset (Our CSV)
-3. UI (MainMenu and SearchMenu)
+3. UI (MainMenu, SearchMenu, LiveTable)
 
 In this project I created a simple CSV-Parser for specific type of CSV, but its highly expandale, I Stored the Columns and Rows into Objects from
 Person Class and Retrieved Data by Query.
