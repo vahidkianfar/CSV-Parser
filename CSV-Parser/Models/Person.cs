@@ -58,17 +58,15 @@ public class Person
     }
     public static async Task RetrievePersonByName(List<Person> persons, string firstName, string lastName)
     {
-        var query = from person in persons
-            where person.FirstName == firstName && person.LastName == lastName
-            select person;
-        
+        var query = persons.Where(person => person.FirstName == firstName && person.LastName == lastName);
+        // var query = from person in persons
+        //     where person.FirstName == firstName && person.LastName == lastName
+        //     select person;
         List<Person> enumerablePerson = query.ToList();
-
         if (enumerablePerson.Count != 0)
         {
             await CreateLiveTable.LiveTable(enumerablePerson.Count, enumerablePerson);
         }
-
         else
         {
             Console.ForegroundColor = ConsoleColor.Magenta;
@@ -79,10 +77,7 @@ public class Person
     
     public static async Task RetrievePersonByCounty(List<Person> persons, string county)
     {
-        var queryCounty = from person in persons
-            where person.County == county
-            select person;
-    
+        var queryCounty = persons.Where(person => person.County == county);
         List<Person> enumerableCounty = queryCounty.ToList();
         if (enumerableCounty.Count != 0)
         {
@@ -99,17 +94,12 @@ public class Person
     
     public static async Task RetrievePersonByCompanyName(List<Person> persons, string company)
     {
-        Console.Clear();
-        var queryCompany = from person in persons
-            where person.CompanyName.Contains(company)
-            select person;
-
+        var queryCompany = persons.Where(person => person.CompanyName.Contains(company));
         List<Person> enumerableCompany = queryCompany.ToList();
         if (enumerableCompany.Count != 0)
         {
             await CreateLiveTable.LiveTable(enumerableCompany.Count, enumerableCompany);
         }
-        
         else
         {
             Console.ForegroundColor = ConsoleColor.Magenta;
@@ -120,21 +110,15 @@ public class Person
 
     public static async Task RetrievePersonByHouseNumberDigits(List<Person> persons, int houseNumberDigits)
     {
-        // var queryHouseNumberDigits = from person in persons
-        //     where Regex.IsMatch(person.Address, @"#\d{3}\b")
-        //     select person;
-
-        var queryHouseNumberDigits = from person in persons
-            where Regex.IsMatch(person.Address, @"^\b\d{3}\b")
-            select person;
-
-        List<Person> enumerableCompany = queryHouseNumberDigits.ToList();
         
+        var queryHouseNumberDigits = persons.Where(person => Regex.IsMatch(person.Address, @"^\b\d{3}\b"));
+        //----IF the HouseNumber is #NUMBER------//
+        //var queryHouseNumberDigits = persons.Where(person => Regex.IsMatch(person.Address, @"#\d{3}\b"));
+        List<Person> enumerableCompany = queryHouseNumberDigits.ToList();
         if (enumerableCompany.Count != 0)
         {
             await CreateLiveTable.LiveTable(enumerableCompany.Count, enumerableCompany, true);
         }
-        
         else
         {
             Console.ForegroundColor = ConsoleColor.Magenta;
@@ -146,17 +130,15 @@ public class Person
     
     public static async Task RetrievePersonByURL(List<Person> persons, int urlCharacters)
     {
-        var queryURL = from person in persons
-            where person.Web.Length > urlCharacters
-            select person;
-
+        var queryURL = persons.Where(person => person.Web.Length > urlCharacters);
+        // var queryURL = from person in persons
+        //     where person.Web.Length > urlCharacters
+        //     select person;
         List<Person> enumerableURL = queryURL.ToList();
-        
         if (enumerableURL.Count != 0)
         {
             await CreateLiveTable.LiveTable(enumerableURL.Count, enumerableURL,false,true);
         }
-        
         else
         {
             Console.ForegroundColor = ConsoleColor.Magenta;
@@ -167,17 +149,15 @@ public class Person
     
     public static async Task RetrievePersonByPostalCodeNumberOfDigits(List<Person> persons, int postalCodeDigits)
     {
-        var queryPostalCodeDigits = from person in persons
-            where Regex.IsMatch(person.Postal, @"[a-zA-Z]\d{1}\b")
-            select person;
-        
+        var queryPostalCodeDigits = persons.Where(person => Regex.IsMatch(person.Postal, @"[a-zA-Z]\d{1}\b"));
+        // var queryPostalCodeDigits = from person in persons
+        //     where Regex.IsMatch(person.Postal, @"[a-zA-Z]\d{1}\b")
+        //     select person;
         List<Person> enumerablePostalCodeDigits = queryPostalCodeDigits.ToList();
-        
         if (enumerablePostalCodeDigits.Count != 0)
         {
             await CreateLiveTable.LiveTable(enumerablePostalCodeDigits.Count, enumerablePostalCodeDigits, false,false, true );
         }
-        
         else
         {
             Console.ForegroundColor = ConsoleColor.Magenta;
@@ -188,10 +168,9 @@ public class Person
     
     public static async Task RetrievePersonByBiggerFirstPhoneNumber(List<Person> persons)
     {
-        var queryPhoneNumberDigits = from person in persons
-            where BigInteger.Parse(person.Phone1.Replace("-",""))
-                .CompareTo(BigInteger.Parse(person.Phone2.Replace("-",""))) == 1
-            select person;
+        var queryPhoneNumberDigits = persons.Where(person =>
+            BigInteger.Parse(person.Phone1.Replace("-", ""))
+            .CompareTo(BigInteger.Parse(person.Phone2.Replace("-", ""))) == 1);
         
         List<Person> enumerablePhoneNumberDigits = queryPhoneNumberDigits.ToList();
         
@@ -199,7 +178,6 @@ public class Person
         {
             await CreateLiveTable.LiveTable(enumerablePhoneNumberDigits.Count, enumerablePhoneNumberDigits, false,false, false, true);
         }
-        
         else
         {
             Console.ForegroundColor = ConsoleColor.Magenta;
