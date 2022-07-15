@@ -19,12 +19,12 @@ a List<Person>, each Person object have the CSV headers as Fields and then I Use
 
 ## Challenge:
 
-The Most challenge that I faced was splitting the Company Name Cause some of the fields has comma!
-for exampl, compane_name: **Elliott, John W Esq**, basically when I wanted to split it by comma, it skipped the second part "John W Esq",
+The Most challenge that I faced was splitting the Company Name, cause some of the fields has comma!
+for example, company_name: **"Elliott, John W Esq"**, basically when I wanted to split it by comma, it skipped the second part **John W Esq**,
 I had to create a RegEx to skip the comma within Quotation Mark:
 
 ```
 var columns = Regex.Split(csvRowData, "[,]{1}(?=(?:[^\"]*\"[^\"]*\")*(?![^\"]*\"))");
 ```
-now I have a Array of String which I can easily put the element of the array into the Object's fields (properties).
+now I have an array of string which I can easily put the elements of the array into the Object's fields (properties).
 
