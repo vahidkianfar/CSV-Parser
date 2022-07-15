@@ -58,7 +58,10 @@ public class Person
     }
     public static async Task RetrievePersonByName(List<Person> persons, string firstName, string lastName)
     {
-        var query = persons.Where(person => person.FirstName == firstName && person.LastName == lastName);
+        var query = persons.Where(person => 
+            string.Equals(person.FirstName, firstName, StringComparison.CurrentCultureIgnoreCase) 
+            && string.Equals(person.LastName, lastName, StringComparison.CurrentCultureIgnoreCase));
+        
         // var query = from person in persons
         //     where person.FirstName == firstName && person.LastName == lastName
         //     select person;
@@ -77,7 +80,9 @@ public class Person
     
     public static async Task RetrievePersonByCounty(List<Person> persons, string county)
     {
-        var queryCounty = persons.Where(person => person.County == county);
+        var queryCounty = persons.Where(person =>
+            string.Equals(person.County, county, StringComparison.CurrentCultureIgnoreCase));
+        
         List<Person> enumerableCounty = queryCounty.ToList();
         if (enumerableCounty.Count != 0)
         {
@@ -95,6 +100,7 @@ public class Person
     public static async Task RetrievePersonByCompanyName(List<Person> persons, string company)
     {
         var queryCompany = persons.Where(person => person.CompanyName.Contains(company));
+        
         List<Person> enumerableCompany = queryCompany.ToList();
         if (enumerableCompany.Count != 0)
         {
@@ -112,8 +118,10 @@ public class Person
     {
         
         var queryHouseNumberDigits = persons.Where(person => Regex.IsMatch(person.Address, @"^\b\d{3}\b"));
-        //----IF the HouseNumber is #NUMBER------//
+        
+        //----IF the HouseNumber is after "#" --> #NUMBER------//
         //var queryHouseNumberDigits = persons.Where(person => Regex.IsMatch(person.Address, @"#\d{3}\b"));
+        
         List<Person> enumerableCompany = queryHouseNumberDigits.ToList();
         if (enumerableCompany.Count != 0)
         {
@@ -131,6 +139,7 @@ public class Person
     public static async Task RetrievePersonByURL(List<Person> persons, int urlCharacters)
     {
         var queryURL = persons.Where(person => person.Web.Length > urlCharacters);
+        
         // var queryURL = from person in persons
         //     where person.Web.Length > urlCharacters
         //     select person;
@@ -150,6 +159,7 @@ public class Person
     public static async Task RetrievePersonByPostalCodeNumberOfDigits(List<Person> persons, int postalCodeDigits)
     {
         var queryPostalCodeDigits = persons.Where(person => Regex.IsMatch(person.Postal, @"[a-zA-Z]\d{1}\b"));
+        
         // var queryPostalCodeDigits = from person in persons
         //     where Regex.IsMatch(person.Postal, @"[a-zA-Z]\d{1}\b")
         //     select person;
