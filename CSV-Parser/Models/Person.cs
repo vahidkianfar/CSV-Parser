@@ -28,7 +28,7 @@ public class Person
     public string Email { get; set; }
     
     public string Web { get; set; }
-    
+
     public Person(string rowData)
     {
         var columns = Regex.Split(rowData, "[,]{1}(?=(?:[^\"]*\"[^\"]*\")*(?![^\"]*\"))");
@@ -112,11 +112,11 @@ public class Person
     public static async Task RetrievePersonByBiggerFirstPhoneNumber(List<Person> persons)
     {
         var queryPhoneNumberDigits = from person in persons
-            where BigInteger.Parse(person.Phone1.Replace("-","").ToString())
-                .CompareTo(BigInteger.Parse(person.Phone2.Replace("-","").ToString())) == 1
+            where BigInteger.Parse(person.Phone1.Replace("-",""))
+                .CompareTo(BigInteger.Parse(person.Phone2.Replace("-",""))) == 1
             select person;
         
         List<Person> enumerablePhoneNumberDigits = queryPhoneNumberDigits.ToList();
-        await CreateLiveTable.LiveTable(enumerablePhoneNumberDigits.Count, enumerablePhoneNumberDigits);
+        await CreateLiveTable.LiveTable(enumerablePhoneNumberDigits.Count, enumerablePhoneNumberDigits, false,false, false, true);
     }
 }

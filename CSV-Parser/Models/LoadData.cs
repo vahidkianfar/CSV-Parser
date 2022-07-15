@@ -13,6 +13,7 @@ public static class LoadData
     {
         var text = File.ReadAllLines(DatasetPath + "/CSV-Parser/Dataset/input.csv");
         var persons = text.Select(line => new Person(line)).ToList();
+        persons = persons.Skip(1).ToList();
         return persons;
     }
 

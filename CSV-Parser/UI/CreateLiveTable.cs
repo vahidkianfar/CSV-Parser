@@ -52,8 +52,7 @@ public static class CreateLiveTable
                             table.UpdateCell(counter, 4, $"[yellow]{person.Phone1}[/]");
                             table.UpdateCell(counter, 5, $"[yellow]{person.Phone2}[/]");
                         }
-
-
+                        
                         counter++;
                     }
                     ctx.Refresh();
