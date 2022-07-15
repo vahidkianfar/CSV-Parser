@@ -47,21 +47,42 @@ public class Person
     public static async Task RetrievePersonByName(List<Person> persons, string firstName, string lastName)
     {
         var query = from person in persons
-            where person.FirstName.Contains(firstName) && person.LastName.Contains(lastName)
+            where person.FirstName == firstName && person.LastName == lastName
             select person;
-
+        
         List<Person> enumerablePerson = query.ToList();
-        await CreateLiveTable.LiveTable(enumerablePerson.Count, enumerablePerson);
+
+        if (enumerablePerson.Count != 0)
+        {
+            await CreateLiveTable.LiveTable(enumerablePerson.Count, enumerablePerson);
+        }
+
+        else
+        {
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("No results found");
+            Console.ResetColor();
+        }
     }
     
     public static async Task RetrievePersonByCounty(List<Person> persons, string county)
     {
         var queryCounty = from person in persons
-            where person.County.Contains(county)
+            where person.County == county
             select person;
     
         List<Person> enumerableCounty = queryCounty.ToList();
-        await CreateLiveTable.LiveTable(enumerableCounty.Count, enumerableCounty);
+        if (enumerableCounty.Count != 0)
+        {
+            await CreateLiveTable.LiveTable(enumerableCounty.Count, enumerableCounty);
+        }
+
+        else
+        {
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("No results found");
+            Console.ResetColor();
+        }
     }
     
     public static async Task RetrievePersonByCompanyName(List<Person> persons, string company)
@@ -71,7 +92,17 @@ public class Person
             select person;
 
         List<Person> enumerableCompany = queryCompany.ToList();
-        await CreateLiveTable.LiveTable(enumerableCompany.Count, enumerableCompany);
+        if (enumerableCompany.Count != 0)
+        {
+            await CreateLiveTable.LiveTable(enumerableCompany.Count, enumerableCompany);
+        }
+        
+        else
+        {
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("No results found");
+            Console.ResetColor();
+        }
     }
 
     public static async Task RetrievePersonByHouseNumberDigits(List<Person> persons, int houseNumberDigits)
@@ -85,7 +116,18 @@ public class Person
             select person;
 
         List<Person> enumerableCompany = queryHouseNumberDigits.ToList();
-        await CreateLiveTable.LiveTable(enumerableCompany.Count, enumerableCompany, true);
+        
+        if (enumerableCompany.Count != 0)
+        {
+            await CreateLiveTable.LiveTable(enumerableCompany.Count, enumerableCompany, true);
+        }
+        
+        else
+        {
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("No results found");
+            Console.ResetColor();
+        }
         
     }
     
@@ -96,7 +138,18 @@ public class Person
             select person;
 
         List<Person> enumerableURL = queryURL.ToList();
-        await CreateLiveTable.LiveTable(enumerableURL.Count, enumerableURL, false,true);
+        
+        if (enumerableURL.Count != 0)
+        {
+            await CreateLiveTable.LiveTable(enumerableURL.Count, enumerableURL,false,true);
+        }
+        
+        else
+        {
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("No results found");
+            Console.ResetColor();
+        }
     }
     
     public static async Task RetrievePersonByPostalCodeNumberOfDigits(List<Person> persons, int postalCodeDigits)
@@ -106,7 +159,18 @@ public class Person
             select person;
         
         List<Person> enumerablePostalCodeDigits = queryPostalCodeDigits.ToList();
-        await CreateLiveTable.LiveTable(enumerablePostalCodeDigits.Count, enumerablePostalCodeDigits, false,false, true );
+        
+        if (enumerablePostalCodeDigits.Count != 0)
+        {
+            await CreateLiveTable.LiveTable(enumerablePostalCodeDigits.Count, enumerablePostalCodeDigits, false,false, true );
+        }
+        
+        else
+        {
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("No results found");
+            Console.ResetColor();
+        }
     }
     
     public static async Task RetrievePersonByBiggerFirstPhoneNumber(List<Person> persons)
@@ -117,6 +181,17 @@ public class Person
             select person;
         
         List<Person> enumerablePhoneNumberDigits = queryPhoneNumberDigits.ToList();
-        await CreateLiveTable.LiveTable(enumerablePhoneNumberDigits.Count, enumerablePhoneNumberDigits, false,false, false, true);
+        
+        if (enumerablePhoneNumberDigits.Count != 0)
+        {
+            await CreateLiveTable.LiveTable(enumerablePhoneNumberDigits.Count, enumerablePhoneNumberDigits, false,false, false, true);
+        }
+        
+        else
+        {
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("No results found");
+            Console.ResetColor();
+        }
     }
 }

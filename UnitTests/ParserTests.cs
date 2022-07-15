@@ -66,5 +66,21 @@ public class Tests
            
     }
     
+    [Test]
+    public void Query_For_Company_Name_Should_Return_Correct_Value()
+    {
+        var company = "Esq";
+        
+        var queryCompany = from person in Persons
+            where person.CompanyName.Contains(company)
+            select person;
+        
+        List<Person> enumerableCompany = queryCompany.ToList();
+        
+        enumerableCompany.First().FirstName.Should().Be("France");
+        enumerableCompany.First().LastName.Should().Be("Andrade");
+           
+    }
+    
     
 }
