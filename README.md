@@ -9,6 +9,11 @@ This App Contains 2 Main Folder and 3 Subfolder:
 In this project I created a simple CSV-Parser for specific type of CSV, but its highly expandale, I Stored the Columns and Rows into Objects from
 Person Class and Retrieved Data by Query.
 
+## App Menu:
+
+![](https://github.com/vahidkianfar/CSV-Parser/blob/master/CSV-Parser/Gif/CSV-Parser-VS.gif)
+
+
 ## Description:
 
 We have a CSV File with 11 different columns:
