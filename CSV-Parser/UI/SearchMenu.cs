@@ -64,7 +64,6 @@ public static class SearchMenu
                 case 6:
                     Console.Clear();
                     await Person.RetrievePersonByBiggerFirstPhoneNumber(persons);
-                    
                     PressAnyKeyToContinue();
                     break;
                 
