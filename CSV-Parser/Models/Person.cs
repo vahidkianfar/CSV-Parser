@@ -68,7 +68,7 @@ public class Person
         List<Person> enumerablePerson = query.ToList();
         if (enumerablePerson.Count != 0)
         {
-            await CreateLiveTable.LiveTable(enumerablePerson.Count, enumerablePerson);
+            await CreateLiveTable.LiveTable(enumerablePerson.Count, enumerablePerson,  persons);
         }
         else
         {
@@ -86,7 +86,7 @@ public class Person
         List<Person> enumerableCounty = queryCounty.ToList();
         if (enumerableCounty.Count != 0)
         {
-            await CreateLiveTable.LiveTable(enumerableCounty.Count, enumerableCounty);
+            await CreateLiveTable.LiveTable(enumerableCounty.Count, enumerableCounty,persons);
         }
 
         else
@@ -104,7 +104,7 @@ public class Person
         List<Person> enumerableCompany = queryCompany.ToList();
         if (enumerableCompany.Count != 0)
         {
-            await CreateLiveTable.LiveTable(enumerableCompany.Count, enumerableCompany);
+            await CreateLiveTable.LiveTable(enumerableCompany.Count, enumerableCompany,persons);
         }
         else
         {
@@ -125,7 +125,7 @@ public class Person
         List<Person> enumerableCompany = queryHouseNumberDigits.ToList();
         if (enumerableCompany.Count != 0)
         {
-            await CreateLiveTable.LiveTable(enumerableCompany.Count, enumerableCompany, true);
+            await CreateLiveTable.LiveTable(enumerableCompany.Count, enumerableCompany, persons,true);
         }
         else
         {
@@ -146,7 +146,7 @@ public class Person
         List<Person> enumerableURL = queryURL.ToList();
         if (enumerableURL.Count != 0)
         {
-            await CreateLiveTable.LiveTable(enumerableURL.Count, enumerableURL,false,true);
+            await CreateLiveTable.LiveTable(enumerableURL.Count, enumerableURL,persons,false,true);
         }
         else
         {
@@ -166,7 +166,7 @@ public class Person
         List<Person> enumerablePostalCodeDigits = queryPostalCodeDigits.ToList();
         if (enumerablePostalCodeDigits.Count != 0)
         {
-            await CreateLiveTable.LiveTable(enumerablePostalCodeDigits.Count, enumerablePostalCodeDigits, false,false, true );
+            await CreateLiveTable.LiveTable(enumerablePostalCodeDigits.Count, enumerablePostalCodeDigits,persons, false,false, true );
         }
         else
         {
@@ -186,7 +186,7 @@ public class Person
         
         if (enumerablePhoneNumberDigits.Count != 0)
         {
-            await CreateLiveTable.LiveTable(enumerablePhoneNumberDigits.Count, enumerablePhoneNumberDigits, false,false, false, true);
+            await CreateLiveTable.LiveTable(enumerablePhoneNumberDigits.Count, enumerablePhoneNumberDigits,persons, false,false, false, true);
         }
         else
         {

@@ -76,4 +76,19 @@ public class Tests
         enumerableCompany.First().FirstName.Should().Be("France");
         enumerableCompany.First().LastName.Should().Be("Andrade");
     }
+    
+    [Test]
+    public void RetrievePersonByCounty_Should_Return_Correct_Value()
+    {
+        var company = "Derbyshire";
+        
+        var queryCompany = from person in Persons
+            where person.CompanyName.Contains(company)
+            select person;
+        
+        List<Person> enumerableCompany = queryCompany.ToList();
+        
+        enumerableCompany.First().FirstName.Should().Be("France");
+        enumerableCompany.First().LastName.Should().Be("Andrade");
+    }
 }

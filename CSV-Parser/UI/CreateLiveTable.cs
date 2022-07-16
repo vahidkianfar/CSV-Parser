@@ -5,7 +5,7 @@ namespace CSV_Parser.UI;
 
 public static class CreateLiveTable
 {
-    public static async Task LiveTable(int personCounter, List<Person> persons, bool address=false, bool url=false, bool postal=false, bool phone=false)
+    public static async Task LiveTable(int personCounter, List<Person> persons , List<Person> allPersons, bool address=false, bool url=false, bool postal=false, bool phone=false)
     {
         Console.Clear();
         var table = new Table().LeftAligned().BorderColor(Color.Blue);
@@ -13,7 +13,8 @@ public static class CreateLiveTable
             .AutoClear(false)
             .StartAsync(ctx =>
             {
-                table.AddColumn("");
+                table.AddColumn("Count");
+                table.AddColumn(" Index");
                 table.AddColumn("First Name");
                 table.AddColumn("Last Name");
                 table.AddColumn("Company Name");
@@ -38,19 +39,20 @@ public static class CreateLiveTable
                 {
                     foreach (var person in persons)
                     {
-                        table.UpdateCell(counter, 1, $"[yellow]{person.FirstName}[/]");
-                        table.UpdateCell(counter, 2, $"[yellow]{person.LastName}[/]");
-                        table.UpdateCell(counter, 3, $"[yellow]{person.CompanyName}[/]");
+                        table.UpdateCell(counter, 1, $"[green]{allPersons.IndexOf(person)+1}[/]");
+                        table.UpdateCell(counter, 2, $"[yellow]{person.FirstName}[/]");
+                        table.UpdateCell(counter, 3, $"[yellow]{person.LastName}[/]");
+                        table.UpdateCell(counter, 4, $"[yellow]{person.CompanyName}[/]");
                         if (address)
-                            table.UpdateCell(counter, 4, $"[yellow]{person.Address}[/]");
+                            table.UpdateCell(counter, 5, $"[yellow]{person.Address}[/]");
                         if (url)
-                            table.UpdateCell(counter, 4, $"[yellow]{person.Web}[/]");
+                            table.UpdateCell(counter, 5, $"[yellow]{person.Web}[/]");
                         if (postal)
-                            table.UpdateCell(counter, 4, $"[yellow]{person.Postal}[/]");
+                            table.UpdateCell(counter, 5, $"[yellow]{person.Postal}[/]");
                         if (phone)
                         {
-                            table.UpdateCell(counter, 4, $"[yellow]{person.Phone1}[/]");
-                            table.UpdateCell(counter, 5, $"[yellow]{person.Phone2}[/]");
+                            table.UpdateCell(counter, 5, $"[yellow]{person.Phone1}[/]");
+                            table.UpdateCell(counter, 6, $"[yellow]{person.Phone2}[/]");
                         }
                         
                         counter++;
