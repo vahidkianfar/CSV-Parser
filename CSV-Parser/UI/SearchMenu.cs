@@ -14,7 +14,7 @@ public static class SearchMenu
             var selectInstructionOption =
                 ConsoleHelper.MultipleChoice(true, "1. Search by First Name and Last Name", "2. Search by County" , "3. Search by Company Name",
                     "4. Retrieve Persons by House Number Digits (3 digits)" , "5. Search by the least URL Characters", "6. Retrieve Persons by Postal Code Digits (1 digits)",
-                    "7. Retrieve Persons by bigger first phone number","8. Exit");
+                    "7. Retrieve Persons by bigger first phone number","8. Back to Main Menu");
             switch (selectInstructionOption)
             {
                 case 0:
@@ -69,7 +69,7 @@ public static class SearchMenu
                     break;
                 
                 case 7:
-                    Environment.Exit(0);
+                    await MainMenu.Start(persons);
                     break;
             }
         }
