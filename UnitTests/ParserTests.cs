@@ -56,6 +56,7 @@ public class Tests
         List<Person> enumerable = query.ToList();
         
         enumerable.Count.Should().Be(1);
+        Persons.IndexOf(enumerable.First()).Should().Be(30);
         enumerable.First().FirstName.Should().Be("Karma");
         enumerable.First().LastName.Should().Be("Quarto");
         enumerable.First().CompanyName.Should().Be("J C S Machinery");
@@ -77,18 +78,18 @@ public class Tests
         enumerableCompany.First().LastName.Should().Be("Andrade");
     }
     
-    [Test]
-    public void RetrievePersonByCounty_Should_Return_Correct_Value()
-    {
-        var company = "Derbyshire";
-        
-        var queryCompany = from person in Persons
-            where person.CompanyName.Contains(company)
-            select person;
-        
-        List<Person> enumerableCompany = queryCompany.ToList();
-        
-        enumerableCompany.First().FirstName.Should().Be("France");
-        enumerableCompany.First().LastName.Should().Be("Andrade");
-    }
+    // [Test]
+    // public void RetrievePersonByCounty_Should_Return_Correct_Value()
+    // {
+    //     var company = "Derbyshire";
+    //     
+    //     var queryCompany = from person in Persons
+    //         where person.CompanyName.Contains(company)
+    //         select person;
+    //     
+    //     List<Person> enumerableCompany = queryCompany.ToList();
+    //     
+    //     enumerableCompany.First().FirstName.Should().Be("France");
+    //     enumerableCompany.First().LastName.Should().Be("Andrade");
+    // }
 }
