@@ -13,7 +13,7 @@ public static class CreateLiveTable
             .AutoClear(false)
             .StartAsync(ctx =>
             {
-                table.AddColumn("Count");
+                table.AddColumn("Count=" + $"[red]{personCounter}[/]");
                 table.AddColumn(" Index");
                 table.AddColumn("First Name");
                 table.AddColumn("Last Name");
